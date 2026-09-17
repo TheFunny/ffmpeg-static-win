@@ -1,0 +1,26 @@
+{
+  "name": "ffmpeg-static-win",
+  "version-string": "2",
+  "dependencies": [
+    {
+      "name": "ffmpeg",
+      "default-features": false,
+      "features": [
+        "avcodec",
+        "avdevice",
+        "avfilter",
+        "avformat",
+        "swresample",
+        "swscale",
+        "vpx",
+        "zlib"
+      ]
+    },
+    {
+      "name": "libvpx",
+      "features": [
+        "highbitdepth"
+      ]
+    }
+  ]
+}
