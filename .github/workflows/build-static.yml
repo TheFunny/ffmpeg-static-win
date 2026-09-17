@@ -56,6 +56,8 @@ jobs:
           curl.exe -fsSL -o vcpkg.tar.gz "https://github.com/microsoft/vcpkg/archive/$env:VCPKG_PIN.tar.gz"
           tar -xzf vcpkg.tar.gz
           Move-Item "vcpkg-$env:VCPKG_PIN" vcpkg-src
+          # vcpkg rejects a binary cache path that does not exist yet
+          New-Item -ItemType Directory -Force -Path "$env:GITHUB_WORKSPACE\vcpkg-cache" | Out-Null
           "VCPKG_ROOT=$env:GITHUB_WORKSPACE\vcpkg-src" >> $env:GITHUB_ENV
           "VCPKG_DEFAULT_BINARY_CACHE=$env:GITHUB_WORKSPACE\vcpkg-cache" >> $env:GITHUB_ENV
           "VCPKG_DISABLE_METRICS=1" >> $env:GITHUB_ENV
